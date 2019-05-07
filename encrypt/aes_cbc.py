@@ -61,7 +61,7 @@ def PKCS7UnPadding(value):
     return unpad(value)
 
 # 加密方法
-def encrypt_oracle(data,key,iv):
+def encrypt(data:str,key:str,iv:bytes):
     '''
     使用AES-BCB进行加密
     :param data: 待加密的数据
@@ -89,7 +89,7 @@ def encrypt_oracle(data,key,iv):
 
 
 # 解密方法
-def decrypt_oralce(encrypted_data,key,iv):
+def decrypt(encrypted_data:str,key:str,iv:bytes):
     '''
     使用AES-BCB进行解密
     :param encrypted_data: 待解密的数据
@@ -107,21 +107,3 @@ def decrypt_oralce(encrypted_data,key,iv):
     # PADDING = '\0'
     # print decrypted_text.rstrip(PADDING)  #zeropadding只见诶去掉结尾\0
     return PKCS7UnPadding(decrypt_data)
-
-if __name__ == '__main__':
-    data = "Qp3Brxm6FxpW46akTJKDiDBcX2fkQEWtD8XXr3T8dsBtd7PBmxjeR5MJz8DYdaKw100818"
-    key = "PvK5RllH5DNInTCs"
-    iv = "hjD3RYMadSmCFFAt"
-
-    t1 = time.time()
-    en = encrypt_oracle(data,key,iv)
-    t2 = time.time()
-    print("加密时间：",t2-t1)
-
-    t1 = time.time()
-    de = decrypt_oralce(en,key,iv)
-    t2 = time.time()
-    print("解密时间：",t2-t1)
-
-    print("加密之后的字符串：",en)
-    print("解密之后的字符串：",de)
