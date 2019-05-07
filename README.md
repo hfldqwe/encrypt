@@ -4,7 +4,7 @@
 
 在文件夹`encrypt`中基本上都是基本的加密和解密
 
-## AES-BCB-128加密
+## AES BCB 128加密
 
 ```python
 from encrypt.aes_cbc import encrypt,decrypt
